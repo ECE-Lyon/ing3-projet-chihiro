@@ -1,10 +1,12 @@
 import javax.swing.JFrame;
 
+
+
 public class Main {
     public static void main(String[] args) {
-        Window window = new Window();
-
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Arrête le code lorsque l'utilisateur appuie sur la croix
+        //On cr�e une nouvelle instance de notre FenetreTexte
+        dvp.swing.bases.texte.Window window = new dvp.swing.bases.texte.Window();
+        window.setVisible(true);//On la rend visible
 
 
     }
