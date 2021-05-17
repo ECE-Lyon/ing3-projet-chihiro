@@ -6,15 +6,27 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class Employee extends JFrame{
+public class Member extends JFrame {
 
     private String name;
 
     private String firstName;
 
+    private String email;
 
-    public Employee() {
-        affichageEmployee();
+    private String password;
+
+    JLabel titre1 = new JLabel();
+    JLabel titre2 = new JLabel();
+    JLabel identifiant = new JLabel();
+    JTextField caseIdentifiant = new JTextField();
+    JLabel motDePasse = new JLabel();
+    JPasswordField caseMotDePasse = new JPasswordField();
+    JButton boutonDeConnection = new JButton();
+    JButton boutonRetour= new JButton();
+
+    public Member() {
+        affichageMember();
 
         setTitle("Page connection compte employé"); // Définit un titre
         setSize(600,400); // Définit la taille : largeur = 600px, hauteur = 400px
@@ -22,21 +34,13 @@ public class Employee extends JFrame{
         setResizable(false);
     }
 
-    private void affichageEmployee() {
+    private void affichageMember() {
 
-        JLabel titre2 = new JLabel();
-        JTextField caseIdentifiant = new JTextField();
-        JLabel identifiant = new JLabel();
-        JPasswordField caseMotDePasse = new JPasswordField();
-        JLabel motDePasse = new JLabel();
-        JButton boutonDeConnection = new JButton();
-        JLabel titre1 = new JLabel();
-        JButton boutonRetour = new JButton();
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // Arrête le code lorsque l'utilisateur clic sur la croix
-
+        titre1.setBackground(new Color(255, 255, 255));
         titre1.setFont(new Font("Calibri", 1, 12));
-        titre1.setText("Page employé");
+        titre1.setText("Page membre");
 
         titre2.setFont(new Font("Calibri", 1, 24));
         titre2.setText("Connectez vous :");
@@ -44,14 +48,16 @@ public class Employee extends JFrame{
         identifiant.setFont(new Font("Calibri", 1, 18));
         identifiant.setText("Identifiant :");
         caseIdentifiant.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) { jTextField1ActionPerformed(evt); }
+            public void actionPerformed(ActionEvent evt) {
+                fonctionIdentifiant(evt);
+            }
         });
 
         motDePasse.setFont(new Font("Calibri", 1, 18));
         motDePasse.setText("Mot de passe :");
         caseMotDePasse.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                fonctionMotDePasse(evt);
             }
         });
 
@@ -60,7 +66,7 @@ public class Employee extends JFrame{
         boutonDeConnection.setText("Se connecter");
         boutonDeConnection.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                fonctionBoutonConnection(evt);
+                fonctionBoutonDeConnexion(evt);
             }
         });
 
@@ -73,49 +79,48 @@ public class Employee extends JFrame{
             }
         });
 
-
         // AFFICHAGE DU CORPS
-        GroupLayout corpsEmployee = new GroupLayout(getContentPane());
-        getContentPane().setLayout(corpsEmployee);
-        corpsEmployee.setHorizontalGroup(
-                corpsEmployee.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(corpsEmployee.createSequentialGroup()
+        GroupLayout corpsMember = new GroupLayout(getContentPane());
+        getContentPane().setLayout(corpsMember);
+        corpsMember.setHorizontalGroup(
+                corpsMember.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(corpsMember.createSequentialGroup()
                                 .addGap(15, 15, 15)
                                 .addComponent(titre1))
-                        .addGroup(corpsEmployee.createSequentialGroup()
+                        .addGroup(corpsMember.createSequentialGroup()
                                 .addGap(170, 170, 170)
                                 .addComponent(titre2))
-                        .addGroup(corpsEmployee.createSequentialGroup()
+                        .addGroup(corpsMember.createSequentialGroup()
                                 .addGap(152, 152, 152)
                                 .addComponent(identifiant)
                                 .addGap(18, 18, 18)
                                 .addComponent(caseIdentifiant, 160, 160, 160))
-                        .addGroup(corpsEmployee.createSequentialGroup()
+                        .addGroup(corpsMember.createSequentialGroup()
                                 .addGap(125, 125, 125)
                                 .addComponent(motDePasse)
                                 .addGap(18, 18, 18)
                                 .addComponent(caseMotDePasse, 160, 160, 160))
-                        .addGroup(corpsEmployee.createSequentialGroup()
+                        .addGroup(corpsMember.createSequentialGroup()
                                 .addGap(220, 220, 220)
                                 .addComponent(boutonDeConnection))
-                        .addGroup(corpsEmployee.createSequentialGroup()
+                        .addGroup(corpsMember.createSequentialGroup()
                                 .addGap(15, 15, 15)
                                 .addComponent(boutonRetour))
         );
 
-        corpsEmployee.setVerticalGroup(
-                corpsEmployee.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(corpsEmployee.createSequentialGroup()
+        corpsMember.setVerticalGroup(
+                corpsMember.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(corpsMember.createSequentialGroup()
                                 .addGap(15, 15, 15)
                                 .addComponent(titre1)
                                 .addGap(40, 40, 40)
                                 .addComponent(titre2)
                                 .addGap(40, 40, 40)
-                                .addGroup(corpsEmployee.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addGroup(corpsMember.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(identifiant)
                                         .addComponent(caseIdentifiant))
                                 .addGap(30, 30, 30)
-                                .addGroup(corpsEmployee.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addGroup(corpsMember.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(motDePasse)
                                         .addComponent(caseMotDePasse))
                                 .addGap(50, 50, 50)
@@ -127,24 +132,23 @@ public class Employee extends JFrame{
         pack();
     }
 
-    private void jTextField1ActionPerformed(ActionEvent evt) {
+    private void fonctionIdentifiant(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
-    private void jPasswordField1ActionPerformed(ActionEvent evt) {
+    private void fonctionMotDePasse(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
-    private void fonctionBoutonConnection(ActionEvent evt) {
-        Private priv = new Private();
-        priv.setVisible(true);
+    private void fonctionBoutonDeConnexion(java.awt.event.ActionEvent evt) {
+        Choice choice = new Choice();
+        choice.setVisible(true);
         this.hide();
     }
 
-    private void fonctionBoutonRetour(ActionEvent evt) {
+    private void fonctionBoutonRetour(java.awt.event.ActionEvent evt) {
         User user = new User();
         user.setVisible(true);
         this.hide();
     }
-
 }

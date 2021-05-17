@@ -2,13 +2,24 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class Guest extends JFrame {
+public class Choice extends JFrame {
 
+    public enum FidelityCard {
+        ENFANT,
+        ETUDIANT,
+        ADULTE,
+        SENIOR,
+    }
+
+    // public static FidelityCard tarif;
+
+    //Variable d'affichage
     JLabel titre1 = new JLabel();
     JLabel titre2 = new JLabel();
     JLabel titre3 = new JLabel();
@@ -26,20 +37,26 @@ public class Guest extends JFrame {
     JRadioButton boutonRadio2 = new JRadioButton();
     JRadioButton boutonRadio3 = new JRadioButton();
     JLabel nombreDeTickets = new JLabel();
-    static JSpinner caseNombreDeTicketsGuest = new JSpinner(new SpinnerNumberModel(0, 0, 100, 1));
+    static JSpinner caseNombreDeTicketsMembre = new JSpinner(new SpinnerNumberModel(0, 0, 100, 1));
+    JLabel tarifSpecial = new JLabel();
+    static JRadioButton boutonRadioEnfant = new JRadioButton();
+    static JRadioButton boutonRadioEtudiant = new JRadioButton();
+    static JRadioButton boutonRadioAdulte = new JRadioButton();
+    static JRadioButton boutonRadioSenior = new JRadioButton();
+    static ButtonGroup buttonGroup = new ButtonGroup(); // Permet de ne pas avoir plusieur bouton radio choisi en même temps
     JButton boutonAcheter = new JButton();
     JButton boutonRetour= new JButton();
 
-    public Guest() {
-        affichageGuest();
+    public Choice() {
+        affichageChoice();
 
-        setTitle("Page Invité"); // Définit un titre
+        setTitle("Présentation film"); // Définit un titre
         setSize(1050,500); // Définit la taille : largeur = 600px, hauteur = 400px
         setLocationRelativeTo(null); // Positionne la fenêtre au centre
         setResizable(false);
     }
 
-    private void affichageGuest() {
+    private void affichageChoice(){
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,14 +101,33 @@ public class Guest extends JFrame {
 
         nombreDeTickets.setFont(new Font("Calibri", 1, 16));
         nombreDeTickets.setText("Combien de tickets voulez-vous ? :");
-        caseNombreDeTicketsGuest.setFont(new Font("Calibri", 1, 16));
+        caseNombreDeTicketsMembre.setFont(new Font("Calibri", 1, 16));
+
+        tarifSpecial.setFont(new Font("Calibri", 1, 16));
+        tarifSpecial.setText("Êtes-vous :");
+
+        boutonRadioEnfant.setFont(new Font("Calibri", 1, 14));
+        boutonRadioEnfant.setText("Enfant");
+        buttonGroup.add(boutonRadioEnfant);
+
+        boutonRadioEtudiant.setFont(new Font("Calibri", 1, 14));
+        boutonRadioEtudiant.setText("Etudiant");
+        buttonGroup.add(boutonRadioEtudiant);
+
+        boutonRadioAdulte.setFont(new Font("Calibri", 1, 14));
+        boutonRadioAdulte.setText("Adulte");
+        buttonGroup.add(boutonRadioAdulte);
+
+        boutonRadioSenior.setFont(new Font("Calibri", 1, 14));
+        boutonRadioSenior.setText("Senior");
+        buttonGroup.add(boutonRadioSenior);
 
         boutonAcheter.setBackground(new Color(255, 204, 0));
         boutonAcheter.setFont(new Font("Calibri", 1, 16));
         boutonAcheter.setText("Acheter les tickets");
         boutonAcheter.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                fonctionBoutonAcheter(evt);
+                fonctionBoutonAchat(evt);
             }
         });
 
@@ -104,99 +140,115 @@ public class Guest extends JFrame {
             }
         });
 
-
-
         // AFFICHAGE DU CORPS
-        GroupLayout corpsGuest = new GroupLayout(getContentPane());
-        getContentPane().setLayout(corpsGuest);
-        corpsGuest.setHorizontalGroup(
-                corpsGuest.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(corpsGuest.createSequentialGroup()
+        GroupLayout corpsChoice = new GroupLayout(getContentPane());
+        getContentPane().setLayout(corpsChoice);
+        corpsChoice.setHorizontalGroup(
+                corpsChoice.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(corpsChoice.createSequentialGroup()
                                 .addGap(40, 40, 40)
-                                /*.addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                /*.addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(fonctionAffichageImage("avatar.jpeg"))
                                         .addComponent(fonctionAffichageImage("loupdewallstreet.jpeg"))
                                         .addComponent(fonctionAffichageImage("harrypotter.jpeg")))
                                 .addGap(40, 40, 40)*/
-                                .addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addGroup(corpsChoice.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addComponent(titre1)
                                         .addComponent(genre1)
                                         .addComponent(dateDeRealisation1)
                                         .addComponent(duree1))
                                 .addGap(78, 78, 78)
-                                .addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addGroup(corpsChoice.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addComponent(titre2)
                                         .addComponent(genre2)
                                         .addComponent(dateDeRealisation2)
                                         .addComponent(duree2))
                                 .addGap(87, 87, 87)
-                                .addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addGroup(corpsChoice.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addComponent(titre3)
                                         .addComponent(genre3)
                                         .addComponent(dateDeRealisation3)
                                         .addComponent(duree3)))
-                        .addGroup(corpsGuest.createSequentialGroup()
+                        .addGroup(corpsChoice.createSequentialGroup()
                                 .addGap(360, 360, 360)
                                 .addComponent(choixDuFilm))
-                        .addGroup(corpsGuest.createSequentialGroup()
+                        .addGroup(corpsChoice.createSequentialGroup()
                                 .addGap(200, 200, 200)
                                 .addComponent(boutonRadio1)
                                 .addGap(50, 50, 50)
                                 .addComponent(boutonRadio2)
                                 .addGap(50, 50, 50)
                                 .addComponent(boutonRadio3))
-                        .addGroup(corpsGuest.createSequentialGroup()
+                        .addGroup(corpsChoice.createSequentialGroup()
+                                .addGap(280, 280, 280)
+                                .addComponent(tarifSpecial)
+                                .addGap(10, 10, 10)
+                                .addComponent(boutonRadioEnfant)
+                                .addGap(25, 25, 25)
+                                .addComponent(boutonRadioEtudiant)
+                                .addGap(25, 25, 25)
+                                .addComponent(boutonRadioAdulte)
+                                .addGap(25, 25, 25)
+                                .addComponent(boutonRadioSenior))
+                        .addGroup(corpsChoice.createSequentialGroup()
                                 .addGap(350, 350, 350)
                                 .addComponent(nombreDeTickets)
                                 .addGap(10, 10, 10)
-                                .addComponent(caseNombreDeTicketsGuest, 50,50,50))
-                        .addGroup(corpsGuest.createSequentialGroup()
+                                .addComponent(caseNombreDeTicketsMembre, 50,50,50))
+                        .addGroup(corpsChoice.createSequentialGroup()
                                 .addGap(420, 420, 420)
                                 .addComponent(boutonAcheter))
-                        .addGroup(corpsGuest.createSequentialGroup()
+                        .addGroup(corpsChoice.createSequentialGroup()
                                 .addGap(20, 20, 20)
                                 .addComponent(boutonRetour))
         );
 
-        corpsGuest.setVerticalGroup(
-                corpsGuest.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(corpsGuest.createSequentialGroup()
-                                .addGap(50, 50, 50)
+        corpsChoice.setVerticalGroup(
+                corpsChoice.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(corpsChoice.createSequentialGroup()
+                                .addGap(55, 55, 55)
                                 /*.addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(fonctionAffichageImage("avatar.jpeg"))
                                         .addComponent(fonctionAffichageImage("loupdewallstreet.jpeg"))
                                         .addComponent(fonctionAffichageImage("harrypotter.jpeg")))
                                 .addGap(10, 10, 10)*/
-                                .addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addGroup(corpsChoice.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(titre1)
                                         .addComponent(titre2)
                                         .addComponent(titre3))
-                                .addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addGroup(corpsChoice.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(genre1)
                                         .addComponent(genre2)
                                         .addComponent(genre3))
-                                .addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addGroup(corpsChoice.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(dateDeRealisation1)
                                         .addComponent(dateDeRealisation2)
                                         .addComponent(dateDeRealisation3))
-                                .addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addGroup(corpsChoice.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(duree1)
                                         .addComponent(duree2)
                                         .addComponent(duree3))
                                 .addGap(50, 50, 50)
                                 .addComponent(choixDuFilm)
-                                .addGap(20, 20, 20)
-                                .addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addGap(25, 25, 25)
+                                .addGroup(corpsChoice.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(boutonRadio1)
                                         .addComponent(boutonRadio2)
                                         .addComponent(boutonRadio3))
-                                .addGap(50, 50, 50)
-                                .addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addGap(40, 40, 40)
+                                .addGroup(corpsChoice.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(tarifSpecial)
+                                        .addComponent(boutonRadioEnfant)
+                                        .addComponent(boutonRadioEtudiant)
+                                        .addComponent(boutonRadioAdulte)
+                                        .addComponent(boutonRadioSenior))
+                                .addGap(30, 30, 30)
+                                .addGroup(corpsChoice.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(nombreDeTickets)
-                                        .addComponent(caseNombreDeTicketsGuest, 25, 25, 25))
-                                .addGap(60, 60, 60)
+                                        .addComponent(caseNombreDeTicketsMembre, 25, 25, 25))
+                                .addGap(40, 40, 40)
                                 .addComponent(boutonAcheter)
-                                .addGap(50, 50, 50)
+                                .addGap(10, 10, 10)
                                 .addComponent(boutonRetour))
         );
 
@@ -204,15 +256,40 @@ public class Guest extends JFrame {
 
     }
 
-    public static int retourneValeurGuest(){
-        return (int) caseNombreDeTicketsGuest.getValue();
+    public static FidelityCard choixDuBouton() {
+        FidelityCard tarif = null;
+        if (boutonRadioEnfant.isSelected()) {tarif = FidelityCard.ENFANT; }
+        else if(boutonRadioEtudiant.isSelected()) {tarif = FidelityCard.ETUDIANT;}
+        else if (boutonRadioAdulte.isSelected()) {tarif = FidelityCard.ADULTE;}
+        else if (boutonRadioSenior.isSelected()) {tarif = FidelityCard.SENIOR;}
+        return tarif;
     }
 
-    public static int calculTarif(int nombreDeTicketsChoisi) {
+    public static int retourneValeurMember(){
+        return (int) caseNombreDeTicketsMembre.getValue();
+    }
+
+    public static int calculTarif(int nombreDeTicketsChoisiMember) {
         int som = 0;
-        som = som + nombreDeTicketsChoisi*11;
+        switch(choixDuBouton()) {
+            case ENFANT:
+                som += 8;
+                break;
+            case ETUDIANT:
+                som += 9;
+                break;
+            case ADULTE:
+                som += 10;
+                break;
+            case SENIOR:
+                som += 9;
+                break;
+        }
+        som = som + (nombreDeTicketsChoisiMember-1)*11; // Réduction pour les personnes en plus de 1€ par rapport aux guest
         return som;
     }
+
+
 
     /*private JLabel fonctionAffichageImage(String image) {
         BufferedImage img = ImageIO.read(Paths.get("Images", image).toFile());
@@ -220,17 +297,19 @@ public class Guest extends JFrame {
         return new JLabel(new ImageIcon(affichageImage));
     }*/
 
-
     private void fonctionBoutonRetour(ActionEvent evt) {
         User user = new User();
         user.setVisible(true);
         this.hide();
     }
 
-    private void fonctionBoutonAcheter(java.awt.event.ActionEvent evt) {
-        AchatGuest achat = new AchatGuest();
-        achat.setVisible(true);
+    private void fonctionBoutonAchat(ActionEvent evt) {
+        AchatMembre achatMembre = new AchatMembre();
+        achatMembre.setVisible(true);
+        this.hide();
     }
+
+
 
 
 }
