@@ -1,7 +1,10 @@
+import javax.imageio.ImageIO;
+import java.nio.file.Paths;
+import java.awt.image.BufferedImage;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
-
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,8 +20,6 @@ public class Choice extends JFrame {
         SENIOR,
     }
 
-    // public static FidelityCard tarif;
-
     //Variable d'affichage
     JLabel titre1 = new JLabel();
     JLabel titre2 = new JLabel();
@@ -32,10 +33,14 @@ public class Choice extends JFrame {
     JLabel duree1 = new JLabel();
     JLabel duree2 = new JLabel();
     JLabel duree3 = new JLabel();
+    JLabel seance1 = new JLabel();
+    JLabel seance2 = new JLabel();
+    JLabel seance3 = new JLabel();
     JLabel choixDuFilm = new JLabel();
     JRadioButton boutonRadio1 = new JRadioButton();
     JRadioButton boutonRadio2 = new JRadioButton();
     JRadioButton boutonRadio3 = new JRadioButton();
+    static ButtonGroup buttonGroupFilmMember = new ButtonGroup();
     JLabel nombreDeTickets = new JLabel();
     static JSpinner caseNombreDeTicketsMembre = new JSpinner(new SpinnerNumberModel(0, 0, 100, 1));
     JLabel tarifSpecial = new JLabel();
@@ -43,7 +48,7 @@ public class Choice extends JFrame {
     static JRadioButton boutonRadioEtudiant = new JRadioButton();
     static JRadioButton boutonRadioAdulte = new JRadioButton();
     static JRadioButton boutonRadioSenior = new JRadioButton();
-    static ButtonGroup buttonGroup = new ButtonGroup(); // Permet de ne pas avoir plusieur bouton radio choisi en même temps
+    static ButtonGroup buttonGroupTarif = new ButtonGroup(); // Permet de ne pas avoir plusieur bouton radio choisi en même temps
     JButton boutonAcheter = new JButton();
     JButton boutonRetour= new JButton();
 
@@ -68,6 +73,8 @@ public class Choice extends JFrame {
         dateDeRealisation1.setText("Date de réalisation : 16 Decembre 2009");
         duree1.setFont(new Font("Calibri", 1, 11));
         duree1.setText("Durée : 162");
+        seance1.setFont(new Font("Calibri", 1, 11));
+        seance1.setText("Séance : 20h00 19/05/2021");
 
         titre2.setFont(new Font("Calibri", 1, 11));
         titre2.setText("Titre : Le Loup de Wall Street");
@@ -77,6 +84,8 @@ public class Choice extends JFrame {
         dateDeRealisation2.setText("Date de réalisation : 25 Decembre 2013");
         duree2.setFont(new Font("Calibri", 1, 11));
         duree2.setText("Durée : 179");
+        seance2.setFont(new Font("Calibri", 1, 11));
+        seance2.setText("Séance : 20h15 19/05/2021");
 
         titre3.setFont(new Font("Calibri", 1, 11));
         titre3.setText("Titre : Harry Potter et le Prince de sang-mêlé");
@@ -86,18 +95,23 @@ public class Choice extends JFrame {
         dateDeRealisation3.setText("Date de réalisation : 15 Juillet 2009");
         duree3.setFont(new Font("Calibri", 1, 11));
         duree3.setText("Durée : 153");
+        seance3.setFont(new Font("Calibri", 1, 11));
+        seance3.setText("Séance : 20h30 19/05/2021");
 
         choixDuFilm.setFont(new Font("Calibri", 1, 16));
         choixDuFilm.setText("Choisissez le film que vous voulez voir :");
 
         boutonRadio1.setFont(new Font("Calibri", 1, 14));
         boutonRadio1.setText("Avatar");
+        buttonGroupFilmMember.add(boutonRadio1);
 
         boutonRadio2.setFont(new Font("Calibri", 1, 14));
         boutonRadio2.setText("Le Loup de Wall Street");
+        buttonGroupFilmMember.add(boutonRadio2);
 
         boutonRadio3.setFont(new Font("Calibri", 1, 14));
         boutonRadio3.setText("Harry Potter et le Prince de sang-mêlé");
+        buttonGroupFilmMember.add(boutonRadio3);
 
         nombreDeTickets.setFont(new Font("Calibri", 1, 16));
         nombreDeTickets.setText("Combien de tickets voulez-vous ? :");
@@ -108,19 +122,19 @@ public class Choice extends JFrame {
 
         boutonRadioEnfant.setFont(new Font("Calibri", 1, 14));
         boutonRadioEnfant.setText("Enfant");
-        buttonGroup.add(boutonRadioEnfant);
+        buttonGroupTarif.add(boutonRadioEnfant);
 
         boutonRadioEtudiant.setFont(new Font("Calibri", 1, 14));
         boutonRadioEtudiant.setText("Etudiant");
-        buttonGroup.add(boutonRadioEtudiant);
+        buttonGroupTarif.add(boutonRadioEtudiant);
 
         boutonRadioAdulte.setFont(new Font("Calibri", 1, 14));
         boutonRadioAdulte.setText("Adulte");
-        buttonGroup.add(boutonRadioAdulte);
+        buttonGroupTarif.add(boutonRadioAdulte);
 
         boutonRadioSenior.setFont(new Font("Calibri", 1, 14));
         boutonRadioSenior.setText("Senior");
-        buttonGroup.add(boutonRadioSenior);
+        buttonGroupTarif.add(boutonRadioSenior);
 
         boutonAcheter.setBackground(new Color(255, 204, 0));
         boutonAcheter.setFont(new Font("Calibri", 1, 16));
@@ -147,28 +161,31 @@ public class Choice extends JFrame {
                 corpsChoice.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(corpsChoice.createSequentialGroup()
                                 .addGap(40, 40, 40)
-                                /*.addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                /*.addGroup(corpsChoice.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(fonctionAffichageImage("avatar.jpeg"))
                                         .addComponent(fonctionAffichageImage("loupdewallstreet.jpeg"))
-                                        .addComponent(fonctionAffichageImage("harrypotter.jpeg")))
-                                .addGap(40, 40, 40)*/
+                                        .addComponent(fonctionAffichageImage("harrypotter.jpeg")))*/
+                                .addGap(40, 40, 40)
                                 .addGroup(corpsChoice.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addComponent(titre1)
                                         .addComponent(genre1)
                                         .addComponent(dateDeRealisation1)
-                                        .addComponent(duree1))
+                                        .addComponent(duree1)
+                                        .addComponent(seance1))
                                 .addGap(78, 78, 78)
                                 .addGroup(corpsChoice.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addComponent(titre2)
                                         .addComponent(genre2)
                                         .addComponent(dateDeRealisation2)
-                                        .addComponent(duree2))
+                                        .addComponent(duree2)
+                                        .addComponent(seance2))
                                 .addGap(87, 87, 87)
                                 .addGroup(corpsChoice.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addComponent(titre3)
                                         .addComponent(genre3)
                                         .addComponent(dateDeRealisation3)
-                                        .addComponent(duree3)))
+                                        .addComponent(duree3)
+                                        .addComponent(seance3)))
                         .addGroup(corpsChoice.createSequentialGroup()
                                 .addGap(360, 360, 360)
                                 .addComponent(choixDuFilm))
@@ -207,11 +224,11 @@ public class Choice extends JFrame {
                 corpsChoice.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(corpsChoice.createSequentialGroup()
                                 .addGap(55, 55, 55)
-                                /*.addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                /*.addGroup(corpsChoice.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(fonctionAffichageImage("avatar.jpeg"))
                                         .addComponent(fonctionAffichageImage("loupdewallstreet.jpeg"))
-                                        .addComponent(fonctionAffichageImage("harrypotter.jpeg")))
-                                .addGap(10, 10, 10)*/
+                                        .addComponent(fonctionAffichageImage("harrypotter.jpeg")))*/
+                                .addGap(10, 10, 10)
                                 .addGroup(corpsChoice.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(titre1)
                                         .addComponent(titre2)
@@ -228,6 +245,10 @@ public class Choice extends JFrame {
                                         .addComponent(duree1)
                                         .addComponent(duree2)
                                         .addComponent(duree3))
+                                .addGroup(corpsChoice.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(seance1)
+                                        .addComponent(seance2)
+                                        .addComponent(seance3))
                                 .addGap(50, 50, 50)
                                 .addComponent(choixDuFilm)
                                 .addGap(25, 25, 25)
@@ -269,7 +290,7 @@ public class Choice extends JFrame {
         return (int) caseNombreDeTicketsMembre.getValue();
     }
 
-    public static int calculTarif(int nombreDeTicketsChoisiMember) {
+    public static int calculTarifMember(int nombreDeTicketsChoisiMember) {
         int som = 0;
         switch(choixDuBouton()) {
             case ENFANT:
@@ -291,7 +312,7 @@ public class Choice extends JFrame {
 
 
 
-    /*private JLabel fonctionAffichageImage(String image) {
+    /*public JLabel fonctionAffichageImage(String image) {
         BufferedImage img = ImageIO.read(Paths.get("Images", image).toFile());
         Image affichageImage = img.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         return new JLabel(new ImageIcon(affichageImage));

@@ -58,7 +58,7 @@ public class AchatGuest extends JFrame{
         marchand.setText("Marchand : AlloJava");
 
         montant.setFont(new Font("Calibri", 1, 15));
-        montant.setText("Montant : " + Guest.calculTarif(Guest.retourneValeurGuest()) + "€");
+        montant.setText("Montant : " + Guest.calculTarifGuest(Guest.retourneValeurGuest()) + "€");
 
         date.setFont(new Font("Calibri", 1, 15));
         date.setText("Date : 19 Mai 2021");

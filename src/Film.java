@@ -26,4 +26,6 @@ public class Film {
 
     private int reamainingSeats;
 
+    private String image;
+
 }

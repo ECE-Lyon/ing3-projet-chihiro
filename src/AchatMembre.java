@@ -58,7 +58,7 @@ public class AchatMembre extends JFrame{
         marchand.setText("Marchand : AlloJava");
 
         montant.setFont(new Font("Calibri", 1, 15));
-        montant.setText("Montant : " + Choice.calculTarif(Choice.retourneValeurMember()) + "€");
+        montant.setText("Montant : " + Choice.calculTarifMember(Choice.retourneValeurMember()) + "€");
 
         date.setFont(new Font("Calibri", 1, 15));
         date.setText("Date : 19 Mai 2021");

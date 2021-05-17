@@ -21,10 +21,14 @@ public class Guest extends JFrame {
     JLabel duree1 = new JLabel();
     JLabel duree2 = new JLabel();
     JLabel duree3 = new JLabel();
+    JLabel seance1 = new JLabel();
+    JLabel seance2 = new JLabel();
+    JLabel seance3 = new JLabel();
     JLabel choixDuFilm = new JLabel();
     JRadioButton boutonRadio1 = new JRadioButton();
     JRadioButton boutonRadio2 = new JRadioButton();
     JRadioButton boutonRadio3 = new JRadioButton();
+    static ButtonGroup buttonGroupFilmGuest = new ButtonGroup();
     JLabel nombreDeTickets = new JLabel();
     static JSpinner caseNombreDeTicketsGuest = new JSpinner(new SpinnerNumberModel(0, 0, 100, 1));
     JButton boutonAcheter = new JButton();
@@ -51,6 +55,8 @@ public class Guest extends JFrame {
         dateDeRealisation1.setText("Date de réalisation : 16 Decembre 2009");
         duree1.setFont(new Font("Calibri", 1, 11));
         duree1.setText("Durée : 162");
+        seance1.setFont(new Font("Calibri", 1, 11));
+        seance1.setText("Séance : 20h00 19/05/2021");
 
         titre2.setFont(new Font("Calibri", 1, 11));
         titre2.setText("Titre : Le Loup de Wall Street");
@@ -60,6 +66,8 @@ public class Guest extends JFrame {
         dateDeRealisation2.setText("Date de réalisation : 25 Decembre 2013");
         duree2.setFont(new Font("Calibri", 1, 11));
         duree2.setText("Durée : 179");
+        seance2.setFont(new Font("Calibri", 1, 11));
+        seance2.setText("Séance : 20h15 19/05/2021");
 
         titre3.setFont(new Font("Calibri", 1, 11));
         titre3.setText("Titre : Harry Potter et le Prince de sang-mêlé");
@@ -69,18 +77,23 @@ public class Guest extends JFrame {
         dateDeRealisation3.setText("Date de réalisation : 15 Juillet 2009");
         duree3.setFont(new Font("Calibri", 1, 11));
         duree3.setText("Durée : 153");
+        seance3.setFont(new Font("Calibri", 1, 11));
+        seance3.setText("Séance : 20h30 19/05/2021");
 
         choixDuFilm.setFont(new Font("Calibri", 1, 16));
         choixDuFilm.setText("Choisissez le film que vous voulez voir :");
 
         boutonRadio1.setFont(new Font("Calibri", 1, 14));
         boutonRadio1.setText("Avatar");
+        buttonGroupFilmGuest.add(boutonRadio1);
 
         boutonRadio2.setFont(new Font("Calibri", 1, 14));
         boutonRadio2.setText("Le Loup de Wall Street");
+        buttonGroupFilmGuest.add(boutonRadio2);
 
         boutonRadio3.setFont(new Font("Calibri", 1, 14));
         boutonRadio3.setText("Harry Potter et le Prince de sang-mêlé");
+        buttonGroupFilmGuest.add(boutonRadio3);
 
         nombreDeTickets.setFont(new Font("Calibri", 1, 16));
         nombreDeTickets.setText("Combien de tickets voulez-vous ? :");
@@ -122,19 +135,22 @@ public class Guest extends JFrame {
                                         .addComponent(titre1)
                                         .addComponent(genre1)
                                         .addComponent(dateDeRealisation1)
-                                        .addComponent(duree1))
+                                        .addComponent(duree1)
+                                        .addComponent(seance1))
                                 .addGap(78, 78, 78)
                                 .addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addComponent(titre2)
                                         .addComponent(genre2)
                                         .addComponent(dateDeRealisation2)
-                                        .addComponent(duree2))
+                                        .addComponent(duree2)
+                                        .addComponent(seance2))
                                 .addGap(87, 87, 87)
                                 .addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addComponent(titre3)
                                         .addComponent(genre3)
                                         .addComponent(dateDeRealisation3)
-                                        .addComponent(duree3)))
+                                        .addComponent(duree3)
+                                        .addComponent(seance3)))
                         .addGroup(corpsGuest.createSequentialGroup()
                                 .addGap(360, 360, 360)
                                 .addComponent(choixDuFilm))
@@ -183,6 +199,10 @@ public class Guest extends JFrame {
                                         .addComponent(duree1)
                                         .addComponent(duree2)
                                         .addComponent(duree3))
+                                .addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(seance1)
+                                        .addComponent(seance2)
+                                        .addComponent(seance3))
                                 .addGap(50, 50, 50)
                                 .addComponent(choixDuFilm)
                                 .addGap(20, 20, 20)
@@ -196,7 +216,7 @@ public class Guest extends JFrame {
                                         .addComponent(caseNombreDeTicketsGuest, 25, 25, 25))
                                 .addGap(60, 60, 60)
                                 .addComponent(boutonAcheter)
-                                .addGap(50, 50, 50)
+                                .addGap(40, 40, 40)
                                 .addComponent(boutonRetour))
         );
 
@@ -208,7 +228,7 @@ public class Guest extends JFrame {
         return (int) caseNombreDeTicketsGuest.getValue();
     }
 
-    public static int calculTarif(int nombreDeTicketsChoisi) {
+    public static int calculTarifGuest(int nombreDeTicketsChoisi) {
         int som = 0;
         som = som + nombreDeTicketsChoisi*11;
         return som;

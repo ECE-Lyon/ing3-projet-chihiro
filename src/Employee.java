@@ -136,7 +136,7 @@ public class Employee extends JFrame{
     }
 
     private void fonctionBoutonConnection(ActionEvent evt) {
-        Private priv = new Private();
+        MiseAJour priv = new MiseAJour();
         priv.setVisible(true);
         this.hide();
     }

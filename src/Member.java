@@ -132,21 +132,21 @@ public class Member extends JFrame {
         pack();
     }
 
-    private void fonctionIdentifiant(java.awt.event.ActionEvent evt) {
+    private void fonctionIdentifiant(ActionEvent evt) {
         // TODO add your handling code here:
     }
 
-    private void fonctionMotDePasse(java.awt.event.ActionEvent evt) {
+    private void fonctionMotDePasse(ActionEvent evt) {
         // TODO add your handling code here:
     }
 
-    private void fonctionBoutonDeConnexion(java.awt.event.ActionEvent evt) {
+    private void fonctionBoutonDeConnexion(ActionEvent evt) {
         Choice choice = new Choice();
         choice.setVisible(true);
         this.hide();
     }
 
-    private void fonctionBoutonRetour(java.awt.event.ActionEvent evt) {
+    private void fonctionBoutonRetour(ActionEvent evt) {
         User user = new User();
         user.setVisible(true);
         this.hide();
