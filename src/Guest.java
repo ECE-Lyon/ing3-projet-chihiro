@@ -239,7 +239,7 @@ public class Guest extends JFrame {
 
     public static int calculTarifGuest(int nombreDeTicketsChoisi) {
         int som = 0;
-        som = som + nombreDeTicketsChoisi*11;
+        som = som + nombreDeTicketsChoisi*12;
         return som;
     }
 
