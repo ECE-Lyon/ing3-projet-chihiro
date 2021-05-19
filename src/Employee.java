@@ -21,7 +21,7 @@ public class Employee extends JFrame{
     public Employee() {
         affichageEmployee();
 
-        setTitle("Page connection compte employé"); // Définit un titre
+        setTitle("Page connexion compte employé"); // Définit un titre
         setSize(600,400); // Définit la taille : largeur = 600px, hauteur = 400px
         setLocationRelativeTo(null); // Positionne la fenêtre au centre
         setResizable(false);
