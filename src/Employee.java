@@ -8,9 +8,14 @@ import javax.swing.*;
 
 public class Employee extends JFrame{
 
-    private String name;
-
-    private String firstName;
+    JLabel titre2 = new JLabel();
+    JTextField caseIdentifiant = new JTextField();
+    JLabel identifiant = new JLabel();
+    JPasswordField caseMotDePasse = new JPasswordField();
+    JLabel motDePasse = new JLabel();
+    JButton boutonDeConnection = new JButton();
+    JLabel titre1 = new JLabel();
+    JButton boutonRetour = new JButton();
 
 
     public Employee() {
@@ -23,15 +28,6 @@ public class Employee extends JFrame{
     }
 
     private void affichageEmployee() {
-
-        JLabel titre2 = new JLabel();
-        JTextField caseIdentifiant = new JTextField();
-        JLabel identifiant = new JLabel();
-        JPasswordField caseMotDePasse = new JPasswordField();
-        JLabel motDePasse = new JLabel();
-        JButton boutonDeConnection = new JButton();
-        JLabel titre1 = new JLabel();
-        JButton boutonRetour = new JButton();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // Arrête le code lorsque l'utilisateur clic sur la croix
 
@@ -83,7 +79,7 @@ public class Employee extends JFrame{
                                 .addGap(15, 15, 15)
                                 .addComponent(titre1))
                         .addGroup(corpsEmployee.createSequentialGroup()
-                                .addGap(170, 170, 170)
+                                .addGap(190, 190, 190)
                                 .addComponent(titre2))
                         .addGroup(corpsEmployee.createSequentialGroup()
                                 .addGap(152, 152, 152)
@@ -124,21 +120,41 @@ public class Employee extends JFrame{
                                 .addComponent(boutonRetour))
         );
 
-        pack();
     }
 
     private void jTextField1ActionPerformed(ActionEvent evt) {
-        // TODO add your handling code here:
+        // pas besoin pour le moment
     }
 
     private void jPasswordField1ActionPerformed(ActionEvent evt) {
-        // TODO add your handling code here:
+        // pas besoin pour le moment
     }
 
     private void fonctionBoutonConnection(ActionEvent evt) {
-        MiseAJour priv = new MiseAJour();
+        String user = caseIdentifiant.getText();
+        String password = caseMotDePasse.getText();
+
+        if(user.equals("login") && password.equals("password")) {
+            MiseAJour priv = new MiseAJour();
+            priv.setVisible(true);
+            this.hide();
+        }
+
+        else {
+            JFrame frame = new JFrame();
+            frame.setSize(300, 100);
+
+            frame.setLayout(null);
+            JLabel label = new JLabel("Identifiant ou mot de passe incorrect");
+            label.setBounds(10, 20, 500, 25);
+            frame.add(label);
+
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+        }
+        /*MiseAJour priv = new MiseAJour();
         priv.setVisible(true);
-        this.hide();
+        this.hide();*/
     }
 
     private void fonctionBoutonRetour(ActionEvent evt) {

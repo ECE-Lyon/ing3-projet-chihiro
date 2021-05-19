@@ -6,11 +6,11 @@ import javax.swing.JButton;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import javax.swing.*;
 
 public class User extends JFrame{
 
+    JButton boutonInscription = new JButton();
     JButton boutonEmployee = new JButton();
     JButton boutonMembre = new JButton();
     JButton boutonGuest = new JButton();
@@ -34,22 +34,25 @@ public class User extends JFrame{
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);  // Arrête le code lorsque l'utilisateur clic sur la croix
 
+        boutonInscription.setBackground(new Color(255, 255, 255));
+        boutonInscription.setFont(new Font("Calibri", 1, 14));
+        boutonInscription.setText("Inscription");
+        boutonInscription.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) { choixBoutonInscription(evt); }
+        });
+
         boutonEmployee.setBackground(new Color(255, 255, 255));
         boutonEmployee.setFont(new Font("Calibri", 1, 14));
         boutonEmployee.setText("Employé");
         boutonEmployee.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                choixBoutonEmployee(evt);
-            }
+            public void actionPerformed(ActionEvent evt) { choixBoutonEmployee(evt); }
         });
 
         boutonMembre.setBackground(new Color(255, 255, 255));
         boutonMembre.setFont(new Font("Calibri", 1, 14));
         boutonMembre.setText("Membre");
         boutonMembre.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                choixBoutonMembre(evt);
-            }
+            public void actionPerformed(ActionEvent evt) { choixBoutonMembre(evt); }
         });
 
         boutonGuest.setBackground(new Color(255, 255, 255));
@@ -101,6 +104,9 @@ public class User extends JFrame{
                         .addGroup(corpsUser.createSequentialGroup()
                                 .addComponent(friseTitre, 600, 600, 600))  // Longueur de la frise
                                 .addGroup(corpsUser.createSequentialGroup()
+                                        .addGap(470, 470, 470)
+                                        .addComponent(boutonInscription))
+                                .addGroup(corpsUser.createSequentialGroup()
                                         .addGap(170, 170, 170)
                                         .addComponent(titre3))
                                 .addGroup(corpsUser.createSequentialGroup()
@@ -117,35 +123,44 @@ public class User extends JFrame{
                 corpsUser.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(corpsUser.createSequentialGroup()
                                 .addComponent(friseTitre, 140, 140, 140) // Hauteur de la frise
-                                .addGap(50, 50, 50)
+                                .addGap(10, 10, 10)
+                                .addComponent(boutonInscription)
+                                .addGap(30, 30, 30)
                                 .addComponent(titre3)
-                                .addGap(50, 50, 50)
+                                .addGap(40, 40, 40)
                                 .addGroup(corpsUser.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                         .addComponent(boutonMembre, 37, 37, 37)
                                         .addComponent(boutonEmployee, 37, 37, 37)
                                         .addComponent(boutonGuest, 37, 37, 37)))
         );
 
-        pack();
+
     }
 
-    private void choixBoutonEmployee(java.awt.event.ActionEvent evt) {
+    private void choixBoutonEmployee(ActionEvent evt) {
         Employee employee = new Employee();
         employee.setVisible(true);
         this.hide();
 
     }
 
-    private void choixBoutonMembre(java.awt.event.ActionEvent evt) {
+    private void choixBoutonMembre(ActionEvent evt) {
         Member membre = new Member();
         membre.setVisible(true);
         this.hide();
 
     }
 
-    private void choixBoutonGuest(java.awt.event.ActionEvent evt) {
+    private void choixBoutonGuest(ActionEvent evt) {
         Guest guest = new Guest();
         guest.setVisible(true);
+        this.hide();
+
+    }
+
+    private void choixBoutonInscription(ActionEvent evt) {
+        SingUp singUp = new SingUp();
+        singUp.setVisible(true);
         this.hide();
 
     }

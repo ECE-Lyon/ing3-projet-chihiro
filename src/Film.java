@@ -1,3 +1,9 @@
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +32,7 @@ public class Film {
 
     private int reamainingSeats;
 
-    private String image;
+    public static BufferedImage image;
+
 
 }

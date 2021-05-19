@@ -21,6 +21,7 @@ public class MiseAJour extends JFrame {
     JLabel duration = new JLabel();
     JTextField caseDuration = new JTextField();
     JButton boutonEnregistrer = new JButton();
+    JButton boutonRetour = new JButton();
 
     public MiseAJour() {
 
@@ -89,12 +90,21 @@ public class MiseAJour extends JFrame {
             }
         });
 
-        boutonEnregistrer.setBackground(new Color(255, 255, 0));
+        boutonEnregistrer.setBackground(new Color(255, 204, 0));
         boutonEnregistrer.setFont(new Font("Calibri", 1, 14));
         boutonEnregistrer.setText("Enregistrer");
         boutonEnregistrer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 fonctionBoutonEnregistrer(evt);
+            }
+        });
+
+        boutonRetour.setBackground(new Color(255, 255, 255));
+        boutonRetour.setFont(new Font("Calibri", 1, 12));
+        boutonRetour.setText("Retour");
+        boutonRetour.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                fonctionBoutonRetour(evt);
             }
         });
 
@@ -142,6 +152,9 @@ public class MiseAJour extends JFrame {
                         .addGroup(corpsMiseAJour.createSequentialGroup()
                                 .addGap(235, 235, 235)
                                 .addComponent(boutonEnregistrer))
+                        .addGroup(corpsMiseAJour.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(boutonRetour))
         );
 
         corpsMiseAJour.setVerticalGroup(
@@ -175,10 +188,9 @@ public class MiseAJour extends JFrame {
                                         .addComponent(duration)
                                         .addComponent(caseDuration))
                                 .addGap(30, 30, 30)
-                                .addComponent(boutonEnregistrer))
+                                .addComponent(boutonEnregistrer)
+                                .addComponent(boutonRetour))
         );
-
-        pack();
 
 
     }
@@ -202,6 +214,12 @@ public class MiseAJour extends JFrame {
     private void fonctionBoutonEnregistrer(ActionEvent evt) {
         MiseAJour priv = new MiseAJour();
         priv.setVisible(true);
+        this.hide();
+    }
+
+    private void fonctionBoutonRetour(ActionEvent evt) {
+        User user = new User();
+        user.setVisible(true);
         this.hide();
     }
 }

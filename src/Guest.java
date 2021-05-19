@@ -1,3 +1,4 @@
+import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
@@ -8,6 +9,16 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class Guest extends JFrame {
+
+
+
+    ImageIcon image1 = new ImageIcon("Images/avatar.jpeg");
+    JLabel jlabel1 = new JLabel(image1, JLabel.CENTER);
+    ImageIcon image2 = new ImageIcon("Images/loupdewallstreet.jpeg");
+    JLabel jlabel2 = new JLabel(image2, JLabel.CENTER);
+    ImageIcon image3 = new ImageIcon("Images/harrypotter.jpeg");
+    JLabel jlabel3 = new JLabel(image3, JLabel.CENTER);
+
 
     JLabel titre1 = new JLabel();
     JLabel titre2 = new JLabel();
@@ -38,7 +49,7 @@ public class Guest extends JFrame {
         affichageGuest();
 
         setTitle("Page Invité"); // Définit un titre
-        setSize(1050,500); // Définit la taille : largeur = 600px, hauteur = 400px
+        setSize(1050,700); // Définit la taille : largeur = 600px, hauteur = 400px
         setLocationRelativeTo(null); // Positionne la fenêtre au centre
         setResizable(false);
     }
@@ -126,12 +137,8 @@ public class Guest extends JFrame {
                 corpsGuest.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(corpsGuest.createSequentialGroup()
                                 .addGap(40, 40, 40)
-                                /*.addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addComponent(fonctionAffichageImage("avatar.jpeg"))
-                                        .addComponent(fonctionAffichageImage("loupdewallstreet.jpeg"))
-                                        .addComponent(fonctionAffichageImage("harrypotter.jpeg")))
-                                .addGap(40, 40, 40)*/
                                 .addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addComponent(jlabel1)
                                         .addComponent(titre1)
                                         .addComponent(genre1)
                                         .addComponent(dateDeRealisation1)
@@ -139,6 +146,7 @@ public class Guest extends JFrame {
                                         .addComponent(seance1))
                                 .addGap(78, 78, 78)
                                 .addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addComponent(jlabel2)
                                         .addComponent(titre2)
                                         .addComponent(genre2)
                                         .addComponent(dateDeRealisation2)
@@ -146,6 +154,7 @@ public class Guest extends JFrame {
                                         .addComponent(seance2))
                                 .addGap(87, 87, 87)
                                 .addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addComponent(jlabel3)
                                         .addComponent(titre3)
                                         .addComponent(genre3)
                                         .addComponent(dateDeRealisation3)
@@ -177,12 +186,12 @@ public class Guest extends JFrame {
         corpsGuest.setVerticalGroup(
                 corpsGuest.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(corpsGuest.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                /*.addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(fonctionAffichageImage("avatar.jpeg"))
-                                        .addComponent(fonctionAffichageImage("loupdewallstreet.jpeg"))
-                                        .addComponent(fonctionAffichageImage("harrypotter.jpeg")))
-                                .addGap(10, 10, 10)*/
+                                .addGap(20, 20, 20)
+                                .addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jlabel1)
+                                        .addComponent(jlabel2)
+                                        .addComponent(jlabel3))
+                                .addGap(10, 10, 10)
                                 .addGroup(corpsGuest.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(titre1)
                                         .addComponent(titre2)
@@ -220,7 +229,7 @@ public class Guest extends JFrame {
                                 .addComponent(boutonRetour))
         );
 
-        pack();                                                                                                                   // SERT A QUOI
+                                                                                                                         // SERT A QUOI
 
     }
 
@@ -233,12 +242,6 @@ public class Guest extends JFrame {
         som = som + nombreDeTicketsChoisi*11;
         return som;
     }
-
-    /*private JLabel fonctionAffichageImage(String image) {
-        BufferedImage img = ImageIO.read(Paths.get("Images", image).toFile());
-        Image affichageImage = img.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-        return new JLabel(new ImageIcon(affichageImage));
-    }*/
 
 
     private void fonctionBoutonRetour(ActionEvent evt) {
