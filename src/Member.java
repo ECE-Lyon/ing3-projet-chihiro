@@ -28,7 +28,7 @@ public class Member extends JFrame {
     public Member() {
         affichageMember();
 
-        setTitle("Page connection compte membre"); // Définit un titre
+        setTitle("Page connexion compte membre"); // Définit un titre
         setSize(600,400); // Définit la taille : largeur = 600px, hauteur = 400px
         setLocationRelativeTo(null); // Positionne la fenêtre au centre
         setResizable(false);
