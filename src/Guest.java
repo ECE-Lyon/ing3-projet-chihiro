@@ -253,6 +253,7 @@ public class Guest extends JFrame {
     private void fonctionBoutonAcheter(java.awt.event.ActionEvent evt) {
         AchatGuest achat = new AchatGuest();
         achat.setVisible(true);
+        this.hide();
     }
 
 
