@@ -320,14 +320,6 @@ public class Choice extends JFrame {
         return som;
     }
 
-
-
-    /*public JLabel fonctionAffichageImage(String image) {
-        BufferedImage img = ImageIO.read(Paths.get("Images", image).toFile());
-        Image affichageImage = img.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-        return new JLabel(new ImageIcon(affichageImage));
-    }*/
-
     private void fonctionBoutonRetour(ActionEvent evt) {
         User user = new User();
         user.setVisible(true);

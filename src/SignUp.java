@@ -39,19 +39,9 @@ class SingUp extends JFrame {
 
         identifiant.setFont(new Font("Calibri", 1, 18));
         identifiant.setText("Identifiant :");
-        caseIdentifiant.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                fonctionIdentifiant(evt);
-            }
-        });
 
         motDePasse.setFont(new Font("Calibri", 1, 18));
         motDePasse.setText("Mot de passe :");
-        caseMotDePasse.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                fonctionMotDePasse(evt);
-            }
-        });
 
         boutonDeConnection.setBackground(new Color(255, 204, 0));
         boutonDeConnection.setFont(new Font("Calibri", 1, 16));
@@ -124,13 +114,6 @@ class SingUp extends JFrame {
         pack();
     }
 
-    private void fonctionIdentifiant(ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void fonctionMotDePasse(ActionEvent evt) {
-        // TODO add your handling code here:
-    }
 
     private void fonctionBoutonInscription(ActionEvent evt) {
         Choice choice = new Choice();

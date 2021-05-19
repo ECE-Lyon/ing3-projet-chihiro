@@ -60,44 +60,19 @@ public class MiseAJour extends JFrame {
 
         title.setFont(new Font("Calibri", 1, 14));
         title.setText("Titre :");
-        caseTitle.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                fonctionTitle(evt);
-            }
-        });
 
         movieGenre.setFont(new Font("Calibri", 1, 14));
         movieGenre.setText("Genre :");
-        caseMovieGenre.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                fonctionMovieGenre(evt);
-            }
-        });
 
         releaseDate.setFont(new Font("Calibri", 1, 14));
         releaseDate.setText("Date de réalisation :");
-        caseReleaseDate.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                fonctionReleaseDate(evt);
-            }
-        });
 
         duration.setFont(new Font("Calibri", 1, 14));
         duration.setText("Durée :");
-        caseDuration.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                fonctionDuration(evt);
-            }
-        });
 
         boutonEnregistrer.setBackground(new Color(255, 204, 0));
         boutonEnregistrer.setFont(new Font("Calibri", 1, 14));
         boutonEnregistrer.setText("Enregistrer");
-        boutonEnregistrer.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                fonctionBoutonEnregistrer(evt);
-            }
-        });
 
         boutonRetour.setBackground(new Color(255, 255, 255));
         boutonRetour.setFont(new Font("Calibri", 1, 12));
@@ -195,21 +170,6 @@ public class MiseAJour extends JFrame {
 
     }
 
-    private void fonctionTitle(ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void fonctionMovieGenre(ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void fonctionReleaseDate(ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void fonctionDuration(ActionEvent evt) {
-        // TODO add your handling code here:
-    }
 
     private void fonctionBoutonEnregistrer(ActionEvent evt) {
         MiseAJour priv = new MiseAJour();

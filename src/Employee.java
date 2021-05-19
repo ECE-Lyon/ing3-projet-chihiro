@@ -39,17 +39,9 @@ public class Employee extends JFrame{
 
         identifiant.setFont(new Font("Calibri", 1, 18));
         identifiant.setText("Identifiant :");
-        caseIdentifiant.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) { jTextField1ActionPerformed(evt); }
-        });
 
         motDePasse.setFont(new Font("Calibri", 1, 18));
         motDePasse.setText("Mot de passe :");
-        caseMotDePasse.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
-            }
-        });
 
         boutonDeConnection.setBackground(new Color(255, 204, 0));
         boutonDeConnection.setFont(new Font("Calibri", 1, 16));
@@ -122,13 +114,6 @@ public class Employee extends JFrame{
 
     }
 
-    private void jTextField1ActionPerformed(ActionEvent evt) {
-        // pas besoin pour le moment
-    }
-
-    private void jPasswordField1ActionPerformed(ActionEvent evt) {
-        // pas besoin pour le moment
-    }
 
     private void fonctionBoutonConnection(ActionEvent evt) {
         String user = caseIdentifiant.getText();
